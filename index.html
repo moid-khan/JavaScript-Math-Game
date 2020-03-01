@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Js Math Game By Moid Khan</title>
+    <style>
+      #valueOne {
+        height: 100px;
+        border-radius: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="levParent">
+        Level:
+        <b id="level">1</b>
+      </div>
+      <input type="text" id="valueOne" />
+      <span>+</span>
+      <input type="text" id="valueTwo" />
+      <span>=</span>
+      <input type="text" id="textBoxAnswer" />
+      <input
+        type="button"
+        id="buttonAns"
+        value="Check Answer"
+        onclick="checkSum()"
+      />
+    </div>
+
+    <script>
+      var valOne = document.getElementById("valueOne");
+      var valTwo = document.getElementById("valueTwo");
+      var txtAns = document.getElementById("textBoxAnswer");
+      var btnAns = document.getElementById("buttonAns");
+      var sum;
+      var levelCount = 2;
+      randomNumGenerator(valOne, valTwo);
+
+      function randomNumGenerator(val1, val2) {
+        val1.value = Math.floor(Math.random() * 10 + 1);
+        val2.value = Math.floor(Math.random() * 10 + 1);
+      }
+
+      function checkSum() {
+        document.getElementById("level").innerHTML = " " + levelCount;
+        sum = parseInt(valOne.value) + parseInt(valTwo.value);
+        if (sum === parseInt(txtAns.value)) {
+          alert("Correct");
+          randomNumGenerator(valOne, valTwo);
+          txtAns.value = "";
+          levelCount++;
+        } else {
+          alert("Wrong");
+        }
+      }
+    </script>
+  </body>
+</html>
