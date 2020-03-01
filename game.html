@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Js Math Game By Moid Khan</title>
+    <style>
+      body {
+        background-image: url("./images/background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .input {
+        margin-top: 12%;
+        background-color: #565656;
+        color: white;
+        font-size: 30px;
+        height: 150px;
+        width: 150px;
+        border: 1px solid teal;
+        border-radius: 50%;
+        text-align: center;
+        background: transparent;
+      }
+      .btn {
+        height: 90px;
+        width: 120px;
+        margin-left: 10px;
+        background-color: teal;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 15px;
+      }
+      .level {
+        padding: 30px;
+        color: white;
+        font-size: 25px;
+      }
+      .operators {
+        font-size: 25px;
+        color: white;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="levParent" class="level">
+        Level:
+        <b id="level">1</b>
+      </div>
+      <center>
+        <input type="text" class="input" id="valueOne" />
+        <span class="operators">+</span>
+        <input type="text" class="input" id="valueTwo" />
+        <span class="operators">=</span>
+        <input
+          type="text"
+          class="input"
+          id="textBoxAnswer"
+          placeholder="Answer"
+        />
+        <input
+          type="button"
+          id="buttonAns"
+          class="btn"
+          value="Check Answer"
+          onclick="checkSum()"
+        />
+      </center>
+    </div>
+
+    <script>
+      var valOne = document.getElementById("valueOne");
+      var valTwo = document.getElementById("valueTwo");
+      var txtAns = document.getElementById("textBoxAnswer");
+      var btnAns = document.getElementById("buttonAns");
+      var sum;
+      var levelCount = 2;
+      randomNumGenerator(valOne, valTwo);
+
+      function randomNumGenerator(val1, val2) {
+        val1.value = Math.floor(Math.random() * 10 + 1);
+        val2.value = Math.floor(Math.random() * 10 + 1);
+      }
+
+      function checkSum() {
+        document.getElementById("level").innerHTML = " " + levelCount;
+        sum = parseInt(valOne.value) + parseInt(valTwo.value);
+        if (sum === parseInt(txtAns.value)) {
+          alert("Correct");
+          randomNumGenerator(valOne, valTwo);
+          txtAns.value = "";
+          levelCount++;
+        } else {
+          alert("Wrong");
+        }
+      }
+    </script>
+  </body>
+</html>
